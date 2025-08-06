@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script>
+        function validateLogin(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            const usernameRegex = /^[a-zA-Z0-9_]{3,15}$/;
+            const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
+
+            if (!usernameRegex.test(username)) {
+                alert("Username must be 3–15 characters and contain only letters, numbers, or underscores.");
+                return false;
+            }
+
+            if (!passwordRegex.test(password)) {
+                alert("Password must be at least 6 characters and include both letters and numbers.");
+                return false;
+            }
+
+            alert("Login successful!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Login Page</h1>
+    <form onsubmit="validateLogin(event)">
+        <label for="loginUsername">Username:</label>
+        <input type="text" id="loginUsername" name="loginUsername" required>
+        <br><br>
+
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" name="loginPassword" required>
+        <br><br>
+
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
